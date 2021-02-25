@@ -1,0 +1,221 @@
+// Variables
+$ec-primary: #ff6700;
+$ec-secondary: #0066b3;
+$ec-blue: #009ee0;
+$ec-gray: #f2f2f2;
+$ec-gray-border: rgba(0,0,0,0.2);
+$white: #fff;
+$error: #e90202;
+$font-color: #000;
+$font-color-disabled: rgba($font-color,0.4);
+
+$font-family: Helvetica, Arial, sans-serif;
+$font-family-bold: Helvetica, Arial, sans-serif;
+$font-size: 14px;
+$font-size-running: 13px;
+
+$border-radius: 3px;
+$transition: all 0.15s ease-in-out;
+
+// Manager
+.easycredit-tx-manager {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-width: 250px;
+  max-width: 500px;
+  font-family: $font-family !important;
+  font-size: $font-size-running;
+  color: $font-color;
+
+  &:before {
+    content: '';
+    margin-bottom: 5px;
+    display: block;
+    height: 25px;
+    background-color: transparent;
+    background-image: url(../img/ratenkauf-logo.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  strong,
+  label {
+    font-family: $font-family-bold;
+  }
+  label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: $font-size-running;
+  }
+  .transaction-info {
+    p {
+      margin: 1em 0;
+    }
+  }
+
+  .progress-bar {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  select,
+  input,
+  button {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 1px 15px 0;
+    width: 100%;
+    max-width: 300px;
+    height: 35px;
+    box-sizing: border-box;
+    line-height: 32px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid $ec-gray-border;
+    border-radius: $border-radius;
+    font-family: $font-family !important;
+    font-size: $font-size;
+    color: $font-color;
+  }
+  select {
+    // Reset
+    &#easycredit-merchant-status {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+    }
+
+    background-image: url(../img/icon-arrow-down.svg);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+    cursor: pointer;
+
+    &:disabled {
+      color: $font-color-disabled;
+    }
+  }
+  input {
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+    &::-webkit-calendar-picker-indicator {
+      color: transparent;
+      background: transparent;
+      margin-left: 10px;
+      margin-right: -5px;
+      padding: 0;
+      width: 10px;
+      background-image: url(../img/icon-arrow-down.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 10px;
+      cursor: pointer;
+    }
+
+    &:disabled {
+      color: $font-color-disabled;
+    }
+  }
+  button {
+    margin-bottom: 0;
+    background-color: $ec-secondary;
+    border: 0;
+    border-radius: 20px;
+    text-align: center;
+    font-family: $font-family-bold !important;
+    color: $white;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: darken($ec-secondary,5%);
+    }
+    &:disabled {
+      background-color:$ec-gray;
+    }
+  }
+  .amount {
+    input {
+      width: calc(100% - 35px);
+    }
+  }
+  .loading, &.loading {
+    background-image: url(../img/ratenkauf-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: 1.4s linear infinite both circle-linear--animation;
+    animation-delay: 0.3s;
+  }
+  .loading p, &.loading div, &.loading:before, &.loading span {
+    visibility:hidden;
+  }
+
+}
+
+// Status Widget
+.easycredit-tx-status-widget {
+  display: inline-block;
+  padding: 0 15px 0 45px;
+  width: auto;
+  height: 35px;
+  vertical-align: middle;
+  border: 0 solid $ec-gray;
+  border-radius: $border-radius;
+  background-color: $ec-gray;
+  background-image: url(../img/ratenkauf-icon.svg);
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  font-family: $font-family !important;
+  font-size: $font-size;
+  line-height: 35px;
+  color: $font-color;
+
+  &.loading {
+    animation: 1.4s linear infinite both circle-linear--animation;
+  }
+
+}
+
+// Alerts
+.easycredit-tx-alert {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  background-color: $ec-secondary;
+  border-radius: $border-radius;
+  font-family: $font-family !important;
+  font-size: $font-size;
+  color: $white;
+
+  &.error {
+    background-color: $error;
+  }
+  &.success {
+    background-color: #8dd600;
+  }
+}
+
+@keyframes circle-linear--animation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

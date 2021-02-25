@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>ratenkauf by easyCredit Transaction Manager</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>Please enable JavaScript to continue.</strong>
+    </noscript>
+
+    <script>
+    var ratenkaufbyeasycreditOrderManagementConfig = {
+      endpoints: {
+        get: 'https://url.to/wp-json/easycredit/v1/transaction',
+        list: 'https://url.to/wp-json/easycredit/v1/transactions',
+        post: 'https://url.to/wp-json/easycredit/v1/transaction'
+      },
+      request_config: {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+    }
+    </script>
+
+    <div>
+      <easycredit-tx-manager id="TKIL34" date="2020-02-25">
+      </easycredit-tx-manager>
+
+      <easycredit-tx-manager id="TKRHsdsdfdsE4" date="2020-02-05">
+      </easycredit-tx-manager>
+
+      <easycredit-tx-status id="TKILWB" date="2020-02-05">
+      </easycredit-tx-status>
+
+      <easycredit-tx-status id="TKILWB" date="2020-02-05">
+      </easycredit-tx-status>
+
+      <div class="easycredit-tx-alert">This is an alert message.</div>
+      <div class="easycredit-tx-alert error">This is an error message.</div>
+      <div class="easycredit-tx-alert success">This is a success message.</div>
+    </div>
+
+  </body>
+</html>
