@@ -1,6 +1,6 @@
 module.exports = {
   methods: {
-    daysSinceOrder (date) {
+    daysSinceOrder () {
       const ymd = this.date.split('-')
 
       const dateOrder = new Date(ymd[0], ymd[1] - 1, ymd[2])

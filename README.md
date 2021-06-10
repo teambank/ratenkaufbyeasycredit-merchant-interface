@@ -43,13 +43,21 @@ The specified endpoints need to authenticate with ratenkauf by easyCredit intern
 
 To add the transaction manager use the following custom tag:
 
-    <easycredit-tx-manager id="VF12345" date="2021-01-01" />
+<img src="https://raw.githubusercontent.com/teambank/ratenkaufbyeasycredit-merchant-interface/master/examples/easycredit-merchant-manager.png" alt="Transaction manager component" width="400">
+
+```
+<easycredit-merchant-manager id="VF12345" date="2021-01-01" />
+```
 
 ## Status Widget
 
 To add the status widget use the following custom tag:
 
-    <easycredit-tx-status id="VF12345" date="2021-01-01" />
+<img src="https://raw.githubusercontent.com/teambank/ratenkaufbyeasycredit-merchant-interface/master/examples/easycredit-merchant-status-widget.png" alt="Status Widget component" width="400">
+
+```
+<easycredit-merchant-status-widget id="VF12345" date="2021-01-01" />
+```
 
 Both widgets take the same arguments where as: 
 

@@ -1,46 +1,32 @@
+// following lines are stripped from auto-generated entry-wc.js file
+import '@vue/cli-service/lib/commands/build/setPublicPath'
 import Vue from 'vue'
+import wrap from '@vue/web-component-wrapper'
 
-import Manager from './Manager.vue'
-import StatusWidget from './StatusWidget.vue'
+// runtime shared by every component chunk
+import 'css-loader/dist/runtime/api.js'
+import 'vue-style-loader/lib/addStylesShadow'
+import 'vue-loader/lib/runtime/componentNormalizer'
 
 import store from './store/index'
 import i18n from './de_DE.js'
 
-import './assets/css/main.scss'
-
-// (optional) 'Custom elements polyfill'
-import 'document-register-element/build/document-register-element'
-import vueCustomElement from 'vue-custom-element'
-
-// import fetch polyfill
-import 'whatwg-fetch'
-
-Vue.use(vueCustomElement)
+if (process.env.NODE_ENV === "development") {
+  const server = require('./server');
+  server.makeServer()
+}
 
 Vue.config.productionTip = false
 Vue.config.performance = true
 
-var eventHub = new Vue()
-Vue.prototype.$eventHub = eventHub
 Vue.prototype.i18n = i18n
 
-var addTransactionTimeout = null
-var transactions = []
-eventHub.$on('add-transaction', (id) => {
-  transactions.push(id)
-
-  clearTimeout(addTransactionTimeout)
-  addTransactionTimeout = setTimeout(() => {
-    store.dispatch('loadTransactions', transactions)
-  }, 100)
-})
-
+import Manager from './Manager.vue?shadow'
 Manager.store = store
 Manager.i18n = i18n
+window.customElements.define('easycredit-merchant-manager', wrap(Vue, Manager))
 
-Vue.customElement('easycredit-tx-manager', Manager)
-
+import StatusWidget from './StatusWidget.vue?shadow'
 StatusWidget.store = store
 StatusWidget.i18n = i18n
-
-Vue.customElement('easycredit-tx-status', StatusWidget)
+window.customElements.define('easycredit-merchant-status-widget', wrap(Vue, StatusWidget))

@@ -1,40 +1,98 @@
 <template>
-  <div v-if="canShip || canRefund" :class="loading ? 'loading' : ''">
-    <input type="hidden" name="easycredit-merchant[transaction_id]" v-model="tx.vorgangskennungFachlich" />
+  <div
+    v-if="canShip || canRefund"
+    :class="loading ? 'loading' : ''"
+  >
+    <div class="spinner" />
+    <input
+      :value="tx.vorgangskennungFachlich"
+      type="hidden"
+      name="easycredit-merchant[transaction_id]"
+    >
     <p>
-      <label for="easycredit-merchant-status">Status</label><br />
-      <select id="easycredit-merchant-status" name="easycredit-merchant[status]" v-model="status">
-        <option value="">{{ $t('Please select ...') }}</option>
-        <optgroup :label="$t('Shipping')" v-if="canShip">
-          <option value="LIEFERUNG">{{ $t('Shipping') }}</option>
+      <label for="easycredit-merchant-status">Status</label><br>
+      <select
+        id="easycredit-merchant-status"
+        v-model="status"
+        name="easycredit-merchant[status]"
+      >
+        <option value="">
+          {{ $t('Please select ...') }}
+        </option>
+        <optgroup
+          v-if="canShip"
+          :label="$t('Shipping')"
+        >
+          <option value="LIEFERUNG">
+            {{ $t('Shipping') }}
+          </option>
         </optgroup>
-        <optgroup :label="$t('Reversal')" v-if="canRefund">
-          <option value="WIDERRUF_VOLLSTAENDIG">{{ $t('Cancelled (completely)') }}</option>
-          <option value="WIDERRUF_TEILWEISE">{{ $t('Cancelled (partially)') }}</option>
-          <option value="RUECKGABE_GARANTIE_GEWAEHRLEISTUNG">{{ $t('Return (Warranty)') }}</option>
-          <option value="MINDERUNG_GARANTIE_GEWAEHRLEISTUNG">{{ $t('Abatement (Warranty)') }}</option>
+        <optgroup
+          v-if="canRefund"
+          :label="$t('Reversal')"
+        >
+          <option value="WIDERRUF_VOLLSTAENDIG">
+            {{ $t('Cancelled (completely)') }}
+          </option>
+          <option value="WIDERRUF_TEILWEISE">
+            {{ $t('Cancelled (partially)') }}
+          </option>
+          <option value="RUECKGABE_GARANTIE_GEWAEHRLEISTUNG">
+            {{ $t('Return (Warranty)') }}
+          </option>
+          <option value="MINDERUNG_GARANTIE_GEWAEHRLEISTUNG">
+            {{ $t('Abatement (Warranty)') }}
+          </option>
         </optgroup>
       </select>
     </p>
 
-    <p class="amount" v-if="canShowAmount">
-      <label for="easycredit-merchant-amount">Minderung um </label><br />
-      <input id="easycredit-merchant-amount" name="easycredit-merchant[amount]" v-model="amount" type="number" min="0.01" :max="tx.bestellwertAktuell" value="0" /> EUR
+    <p
+      v-if="canShowAmount"
+      class="amount"
+    >
+      <label for="easycredit-merchant-amount">Minderung um </label><br>
+      <input
+        id="easycredit-merchant-amount"
+        v-model="amount"
+        name="easycredit-merchant[amount]"
+        type="number"
+        min="0.01"
+        :max="tx.bestellwertAktuell"
+        value="0"
+      > EUR
     </p>
 
     <p class="date">
-      <input for="easycredit-merchant-date" name="easycredit-merchant[date]" v-model="date" type="date" class="date" :disabled="!canEditDate" />
-      <button type="button" class="set_merchant_status" :disabled="loading || !status" v-on:click="updateTransaction">Senden</button>
+      <input
+        v-model="date"
+        for="easycredit-merchant-date"
+        name="easycredit-merchant[date]"
+        type="date"
+        class="date"
+        :disabled="!canEditDate"
+      >
+      <button
+        type="button"
+        class="set_merchant_status"
+        :disabled="loading || !status"
+        @click="updateTransaction"
+      >
+        Senden
+      </button>
     </p>
-
   </div>
 </template>
 
 <script>
 import config from '../../config.js'
+import store from '../../store'
+import i18n from '../../de_DE.js'
 
 export default {
-  props: ['tx'],
+  props: {
+    tx: Object
+  },
   data () {
     return {
       id: this.tx.vorgangskennungFachlich,
@@ -61,7 +119,7 @@ export default {
   },
   methods: {
     $t (key) {
-      return this.i18n.get(key)
+      return i18n.get(key)
     },
     async updateTransaction () {
       this.loading = true
@@ -73,10 +131,11 @@ export default {
             body: JSON.stringify(this.$data)
           }
         })
-        await this.$store.dispatch('loadTransaction', this.tx.vorgangskennungFachlich)
+        await store.dispatch('loadTransaction', this.tx.vorgangskennungFachlich)
         this.loading = false
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err)
       }
     }
   }

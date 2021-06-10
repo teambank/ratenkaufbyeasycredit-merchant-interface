@@ -1,19 +1,21 @@
 <template>
-  <div class="easycredit-tx-status-widget">
+  <div :class="(isLoading) ? 'easycredit-tx-status-widget loading' : 'easycredit-tx-status-widget'">
+    <span class="logo" />
     <span>{{ statusLabel }}</span>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import daysSinceOrder from './mixins/dateHelper'
+import store from './store'
+import i18n from './de_DE.js'
 
 export default {
+  mixins: [daysSinceOrder],
   props: [
     'id',
     'date'
   ],
-  mixins: [daysSinceOrder],
   data () {
     return {
       statusMapping: {
@@ -23,11 +25,13 @@ export default {
       }
     }
   },
-  beforeMount () {
-    this.$eventHub.$emit('add-transaction', this.id)
-  },
   computed: {
-    ...mapGetters(['transaction']),
+    isLoading () {
+      return store.getters.isLoading
+    },
+    transaction () {
+      return store.getters.transaction
+    },
     tx () {
       return this.transaction(this.id)
     },
@@ -35,7 +39,7 @@ export default {
       let label = this.$t('Waiting')
 
       if (!this.tx) {
-        if (this.daysSinceOrder(this.date) > 1) {
+        if (this.daysSinceOrder() > 1) {
           label = this.$t('n/a')
         }
         return label
@@ -51,10 +55,17 @@ export default {
       return label
     }
   },
+  beforeMount () {
+    store.dispatch('loadTransactions')
+  },
   methods: {
     $t (key) {
-      return this.i18n.get(key)
+      return i18n.get(key)
     }
   }
 }
 </script>
+
+<style lang="scss">
+@import 'assets/css/main.scss'
+</style>
