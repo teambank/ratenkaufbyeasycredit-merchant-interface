@@ -8,6 +8,7 @@
 <script>
 import store from './store'
 import i18n from './de_DE.js'
+import helpers from './helpers';
 
 export default {
   props: {
@@ -43,7 +44,7 @@ export default {
       let label = this.$t('Waiting')
 
       if (!this.tx) {
-        if (this.$helpers.daysSinceOrder(this.date) > 1) {
+        if (helpers.daysSinceOrder(this.date) > 1) {
           label = this.$t('n/a')
         }
         return label

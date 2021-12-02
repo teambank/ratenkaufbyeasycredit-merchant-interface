@@ -82,7 +82,7 @@
           min="0.01"
           :max="tx.orderDetails.currentOrderValue"
           value="0"
-        > € / {{ $helpers.formatCurrency(tx.orderDetails.currentOrderValue) }}
+        > € / {{ helpers.formatCurrency(tx.orderDetails.currentOrderValue) }}
       </span>
     </p>
 
@@ -103,6 +103,7 @@
 import config from '../../config.js'
 import store from '../../store'
 import i18n from '../../de_DE.js'
+import helpers from '../../helpers.js'
 
 export default {
   props: {
@@ -159,6 +160,9 @@ export default {
         // eslint-disable-next-line no-console
         console.log(err)
       }
+    },
+    helpers () {
+      return helpers
     }
   }
 }

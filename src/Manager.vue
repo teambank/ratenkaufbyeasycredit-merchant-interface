@@ -11,7 +11,7 @@
       :tx="tx"
     />
 
-    <span v-if="!tx && $helpers.daysSinceOrder(date) >= 1">
+    <span v-if="!tx && helpers.daysSinceOrder(date) >= 1">
       Die Transaktion <strong>{{ id }}</strong> ist nicht vorhanden. Bitte loggen Sie sich im <a href="https://app.easycredit.de">Händlerinterface</a> ein oder kontaktieren Sie unseren Support.
     </span>
     <span v-else-if="!tx">
@@ -32,7 +32,6 @@ export default {
     Progress,
     Actions
   },
-  mixins: [ helpers ],
   props: {
     id: String,
     date: String
@@ -50,6 +49,11 @@ export default {
   },
   beforeMount () {
     store.dispatch('loadTransactions')
+  },
+  methods: {
+    helpers () {
+      return helpers;
+    }
   }
 }
 </script>

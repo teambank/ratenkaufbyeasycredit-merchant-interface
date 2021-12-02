@@ -25,6 +25,7 @@
 
 <script>
 import i18n from '../../de_DE.js'
+import helpers from '../../helpers.js'
 
 export default {
   props: {
@@ -47,8 +48,8 @@ export default {
       }]
     },
     orderAmount () {
-      return this.$helpers.formatCurrency(this.tx.orderDetails.currentOrderValue)
-      + ' / ' + this.$helpers.formatCurrency(this.tx.orderDetails.originalOrderValue)
+      return helpers.formatCurrency(this.tx.orderDetails.currentOrderValue)
+      + ' / ' + helpers.formatCurrency(this.tx.orderDetails.originalOrderValue)
     }
   },
   methods: {
