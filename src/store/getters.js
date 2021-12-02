@@ -1,8 +1,7 @@
 export default {
   transaction (state) {
     return (id) => {
-      const index = state.transactions.findIndex(obj => obj && obj.vorgangskennungFachlich === id)
-      return state.transactions[index]
+      return state.transactions.find(obj => obj && obj.transactionId === id)
     }
   },
   transactions (state) {

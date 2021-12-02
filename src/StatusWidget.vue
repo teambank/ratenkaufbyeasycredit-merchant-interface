@@ -6,22 +6,26 @@
 </template>
 
 <script>
-import daysSinceOrder from './mixins/dateHelper'
 import store from './store'
 import i18n from './de_DE.js'
 
 export default {
-  mixins: [daysSinceOrder],
-  props: [
-    'id',
-    'date'
-  ],
+  props: {
+    id: {
+      type: String
+    },
+    date: {
+      type: String
+    }
+  },
   data () {
     return {
       statusMapping: {
-        LIEFERUNG_MELDEN: this.$t('Report Shipping'),
-        IN_ABRECHNUNG: this.$t('In Clearing'),
-        ABGERECHNET: this.$t('Cleared')
+        REPORT_CAPTURE: this.$t('Report Shipping'),
+        REPORT_CAPTURE_EXPIRING: this.$t('Report Shipping (expiring)'),
+        IN_BILLING: this.$t('In Clearing'),
+        BILLED: this.$t('Cleared'),
+        EXPIRED: this.$t('Expired')
       }
     }
   },
@@ -39,17 +43,17 @@ export default {
       let label = this.$t('Waiting')
 
       if (!this.tx) {
-        if (this.daysSinceOrder() > 1) {
+        if (this.$helpers.daysSinceOrder(this.date) > 1) {
           label = this.$t('n/a')
         }
         return label
       }
 
-      if (this.statusMapping[this.tx.haendlerstatusV2] !== 'undefined') {
-        label = this.statusMapping[this.tx.haendlerstatusV2]
+      if (this.statusMapping[this.tx.status] !== 'undefined') {
+        label = this.statusMapping[this.tx.status]
       }
 
-      if (this.tx.bestellwertUrspruenglich > this.tx.bestellwertAktuell) {
+      if (this.tx.orderDetails.originalOrderValue > this.tx.orderDetails.currentOrderValue) {
         label = this.$t('Refunded')
       }
       return label

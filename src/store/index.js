@@ -21,8 +21,9 @@ export default new Vuex.Store({
 
       const result = await fetch(config.getEndpoints().list, config.getRequestConfig())
       const json = await result.json()
-      if (json && Array.isArray(json)) {
-        context.commit('fetchList', json)
+      const transactions = json.TransactionList
+      if (transactions && Array.isArray(transactions)) {
+        context.commit('fetchList', transactions)
         context.commit('loading', false)
       }
     },

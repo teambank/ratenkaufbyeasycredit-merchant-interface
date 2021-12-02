@@ -1,63 +1,51 @@
-import { Server, Model } from 'miragejs'
+import {
+  createServer,
+  Model,
+  Serializer
+} from "miragejs"
 
-export function makeServer({ environment = "development" } = {}) {
+Object.defineProperty(String.prototype, 'capitalize', {
+  value: function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  },
+  enumerable: false
+});
 
-let server = new Server({
-  environment,
-
+export default function () {
+  createServer({
+    serializers: {
+      application: Serializer.extend({
+        keyForModel(modelName) {
+          return modelName.split('-').map(a => a.capitalize()).join('');
+        },
+        keyForCollection(modelName) {
+          return this.keyForModel(modelName);
+        },
+        keyForRelationship(modelName) {
+          return modelName;
+        }
+      })
+    },
     models: {
-      transaction: Model,
+      TransactionList: Model,
+    },
+      seeds(server) {
+        server.create("TransactionList", {"transactionId":"V3U141","status":"REPORT_CAPTURE","bookings":[],"customer":{"firstName":"Ralf","lastName":"Ratenkauf","customerNumber":"9915420238"},"creditAccountNumber":"9788122868","orderDetails":{"orderDate":"2021-11-22","currentOrderValue":589,"originalOrderValue":589},"refundDetails":[],"refundsTotalValue":0});
+        server.create("TransactionList", {"transactionId":"V3UH4T","status":"REPORT_CAPTURE","bookings":[],"customer":{"firstName":"Kiril","lastName":"Petkov","customerNumber":"9767293303"},"creditAccountNumber":"9722780174","orderDetails":{"orderDate":"2021-11-22","currentOrderValue":578,"originalOrderValue":578},"refundDetails":[],"refundsTotalValue":0});
     },
 
-  seeds(server) {
-    server.create("transaction", {
-      "kundennummer": "9496542688",
-      "vorgangskennungFachlich": "TKRJ5T",
-      "vorgangskennungShop": "4434.3852.1512",
-      "kundeVorname": "Eimer",
-      "kundeNachname": "privat",
-      "kreditkontonummer": "9000967896",
-      "bestelldatum": "2020-01-20",
-      "bestellwertAktuell": 0,
-      "haendlerstatusV2": "IN_ABRECHNUNG",
-      "bestellwertUrspruenglich": 530.22,
-      "widerrufenerBetrag": 530.22,
-      "lieferdatum": "2020-01-30",
-      "abrechnungsdatum": null,
-      "rueckabwicklunngGebuchtAm": "2020-01-30",
-      "rueckabwicklungEingegebenAm": "2020-01-30",
-      "rueckabwicklungsdatum": "2020-01-30"
-    })
-    server.create("transaction", {
-      "kundennummer": "9415819657",
-      "vorgangskennungFachlich": "V314WJ",
-      "vorgangskennungShop": "271",
-      "kundeVorname": "Ralf",
-      "kundeNachname": "Ratenkauf",
-      "kreditkontonummer": "9604315238",
-      "bestelldatum": "2020-08-18",
-      "bestellwertAktuell": 603.95,
-      "haendlerstatusV2": "LIEFERUNG_MELDEN",
-      "bestellwertUrspruenglich": 603.95,
-      "widerrufenerBetrag": 0,
-      "lieferdatum": null,
-      "abrechnungsdatum": null,
-      "rueckabwicklunngGebuchtAm": null,
-      "rueckabwicklungEingegebenAm": null,
-      "rueckabwicklungsdatum": null
-    })
-  },
+    routes() {
 
-  routes() {
+      this.namespace = "api"
 
-    this.namespace = "api"
-
-    this.get("/transactions", schema => {
-      return schema.transactions.all().models
-    })
-    
-  },
+      this.get("/transactions", schema => {
+        return schema.transactionLists.all()
+      })
+     
+      this.post("/transaction", (schema, request) => {
+        let attrs = JSON.parse(request.requestBody)
+        return { success: true, attrs: attrs }
+      })
+    },
   })
-
-  return server
 }

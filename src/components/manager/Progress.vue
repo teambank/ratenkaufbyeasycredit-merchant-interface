@@ -1,11 +1,11 @@
 <template>
   <div class="transaction-info">
     <p>
-      <strong>{{ $t('Customer') }}:</strong> {{ tx.kundeVorname }} {{ tx.kundeNachname }}<br>
-      <strong>{{ $t('Customer No') }}:</strong> {{ tx.kundennummer }}<br>
-      <strong>{{ $t('Credit Account No') }}:</strong> {{ tx.kreditkontonummer }}<br>
-      <strong>{{ $t('Transaction Id') }}:</strong> {{ tx.vorgangskennungFachlich }}<br>
-      <strong>{{ $t('Order Amount') }}:</strong> {{ tx.bestellwertAktuell }} / {{ tx.bestellwertUrspruenglich }}<br>
+      <strong>{{ $t('Customer') }}:</strong> {{ tx.customer.firstName }} {{ tx.customer.lastName }}<br>
+      <strong>{{ $t('Customer No') }}:</strong> {{ tx.customer.customerNumber }}<br>
+      <strong>{{ $t('Credit Account No') }}:</strong> {{ tx.creditAccountNumber }}<br>
+      <strong>{{ $t('Transaction Id') }}:</strong> {{ tx.transactionId }}<br>
+      <strong>{{ $t('Order Amount') }}:</strong> {{ orderAmount }}<br>
     </p>
 
     <div class="progress-bar">
@@ -27,22 +27,28 @@
 import i18n from '../../de_DE.js'
 
 export default {
-  props: ['tx'],
+  props: {
+    tx: Object
+  },
   computed: {
     progressFields () {
       return [{
         label: this.$t('Order'),
-        value: this.tx.bestelldatum
+        value: this.tx.orderDetails.orderDate
       }, {
         label: this.$t('Shipping'),
-        value: this.tx.lieferdatum
+        value: this.tx.bookings.filter(b => b.type === 'CAPTURE').created
       }, {
         label: this.$t('Clearing'),
-        value: this.tx.abrechnungsdatum
+        value: this.tx.bookings.filter(b => b.type === 'NOTIFY').created
       }, {
-        label: this.$t('Reversal'),
-        value: this.tx.rueckabwicklungsdatum
+        label: this.$t('Refund'),
+        value: this.tx.bookings.filter(b => b.type === 'REFUND').created
       }]
+    },
+    orderAmount () {
+      return this.$helpers.formatCurrency(this.tx.orderDetails.currentOrderValue)
+      + ' / ' + this.$helpers.formatCurrency(this.tx.orderDetails.originalOrderValue)
     }
   },
   methods: {

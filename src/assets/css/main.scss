@@ -182,7 +182,7 @@ $icon-arrow-down: '<svg width="20" height="13" xmlns="http://www.w3.org/2000/svg
   }
   select {
     // Reset
-    &#easycredit-merchant-status {
+    &#easycredit-merchant-status, &#easycredit-merchant-refund-reason {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -246,7 +246,7 @@ $icon-arrow-down: '<svg width="20" height="13" xmlns="http://www.w3.org/2000/svg
   }
   .amount {
     input {
-      width: calc(100% - 35px);
+      width: 120px;
     }
   }
   .loading .spinner, &.loading .spinner {

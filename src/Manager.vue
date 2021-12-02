@@ -2,16 +2,16 @@
   <div :class="(isLoading) ? 'easycredit-tx-manager loading' : 'easycredit-tx-manager'">
     <div class="spinner" />
 
-    <Progress 
+    <Progress
       v-if="tx"
-      :tx="tx" 
+      :tx="tx"
     />
-    <Actions 
-      v-if="tx" 
+    <Actions
+      v-if="tx"
       :tx="tx"
     />
 
-    <span v-if="!tx && daysSinceOrder() >= 1">
+    <span v-if="!tx && $helpers.daysSinceOrder(date) >= 1">
       Die Transaktion <strong>{{ id }}</strong> ist nicht vorhanden. Bitte loggen Sie sich im <a href="https://app.easycredit.de">Händlerinterface</a> ein oder kontaktieren Sie unseren Support.
     </span>
     <span v-else-if="!tx">
@@ -24,7 +24,7 @@
 import Progress from './components/manager/Progress'
 import Actions from './components/manager/Actions'
 
-import daysSinceOrder from './mixins/dateHelper'
+import helpers from './helpers'
 import store from './store'
 
 export default {
@@ -32,7 +32,7 @@ export default {
     Progress,
     Actions
   },
-  mixins: [daysSinceOrder],
+  mixins: [ helpers ],
   props: {
     id: String,
     date: String

@@ -19,59 +19,74 @@
         <option value="">
           {{ $t('Please select ...') }}
         </option>
-        <optgroup
+        <option
           v-if="canShip"
-          :label="$t('Shipping')"
+          value="CAPTURE"
         >
-          <option value="LIEFERUNG">
-            {{ $t('Shipping') }}
-          </option>
-        </optgroup>
-        <optgroup
+          {{ $t('Shipping') }}
+        </option>
+        <option
           v-if="canRefund"
-          :label="$t('Reversal')"
+          value="REFUND"
         >
-          <option value="WIDERRUF_VOLLSTAENDIG">
-            {{ $t('Cancelled (completely)') }}
-          </option>
-          <option value="WIDERRUF_TEILWEISE">
-            {{ $t('Cancelled (partially)') }}
-          </option>
-          <option value="RUECKGABE_GARANTIE_GEWAEHRLEISTUNG">
-            {{ $t('Return (Warranty)') }}
-          </option>
-          <option value="MINDERUNG_GARANTIE_GEWAEHRLEISTUNG">
-            {{ $t('Abatement (Warranty)') }}
-          </option>
-        </optgroup>
+          {{ $t('Refund') }}
+        </option>
       </select>
     </p>
 
     <p
-      v-if="canShowAmount"
-      class="amount"
+      v-if="status === 'CAPTURE'"
+      class="tracking-number"
     >
-      <label for="easycredit-merchant-amount">Minderung um </label><br>
+      <label for="easycredit-merchant-tracking-number">Trackingnummer (Versanddienstleister)</label><br>
       <input
-        id="easycredit-merchant-amount"
-        v-model="amount"
-        name="easycredit-merchant[amount]"
-        type="number"
-        min="0.01"
-        :max="tx.bestellwertAktuell"
-        value="0"
-      > EUR
+        id="easycredit-merchant-tracking-number"
+        v-model="trackingNumber"
+        name="easycredit-merchant[trackingNumber]"
+        type="text"
+        maxlength="50"
+      >
     </p>
 
-    <p class="date">
-      <input
-        v-model="date"
-        for="easycredit-merchant-date"
-        name="easycredit-merchant[date]"
-        type="date"
-        class="date"
-        :disabled="!canEditDate"
+    <p
+      v-if="status === 'REFUND'"
+      class="refund"
+    >
+      <select
+        id="easycredit-merchant-refund-reason"
+        v-model="refundReason"
+        name="easycredit-merchant[refund-reason]"
       >
+        <option value="">
+          {{ $t('Please select ...') }}
+        </option>
+        <option
+          v-for="(name, value) in refundReasons"
+          :key="value"
+          :value="value"
+        >
+          {{ $t(name) }}
+        </option>
+      </select>
+
+      <span
+        v-if="canShowAmount"
+        class="amount"
+      >
+        <label for="easycredit-merchant-amount">{{ $t('Reduction by') }} </label><br>
+        <input
+          id="easycredit-merchant-amount"
+          v-model="amount"
+          name="easycredit-merchant[amount]"
+          type="number"
+          min="0.01"
+          :max="tx.orderDetails.currentOrderValue"
+          value="0"
+        > € / {{ $helpers.formatCurrency(tx.orderDetails.currentOrderValue) }}
+      </span>
+    </p>
+
+    <p>
       <button
         type="button"
         class="set_merchant_status"
@@ -95,27 +110,33 @@ export default {
   },
   data () {
     return {
-      id: this.tx.vorgangskennungFachlich,
-      status: this.tx.lieferdatum === null ? 'LIEFERUNG' : '',
+      id: this.tx.transactionId,
+      status: this.tx.bookings.filter(b => b.type === 'CAPTURE').length ? 'CAPTURE' : '',
       date: new Date(Date.now()).toLocaleString().split(',')[0].split('/').reverse().join('-'),
       amount: 0.01,
-      loading: false
+      loading: false,
+      trackingNumber: '',
+      refundReason: ''
     }
   },
   computed: {
     canShowAmount () {
-      return this.status === 'WIDERRUF_TEILWEISE' ||
-        this.status === 'MINDERUNG_GARANTIE_GEWAEHRLEISTUNG'
-    },
-    canEditDate () {
-      return this.status !== 'LIEFERUNG'
+      return ['REVOCATION_PARTIAL', 'REDUCTION_GUARANTEE_WARRANTY'].includes(this.refundReason)
     },
     canShip () {
-      return this.tx.lieferdatum === null
+      return !this.tx.bookings.filter(b => b.type === 'CAPTURE').length
     },
     canRefund () {
-      return this.tx.bestellwertAktuell > 0
-    }
+      return this.tx.orderDetails.currentOrderValue > 0
+    },
+    refundReasons () {
+      return {
+        REVOCATION_FULL: this.$t('Revocation'),
+        REVOCATION_PARTIAL: this.$t('Partial Revocation'),
+        REFUND_GUARANTEE_WARRANTY: this.$t('Refund (Guarantee / Warranty)'),
+        REDUCTION_GUARANTEE_WARRANTY: this.$t('Reduction (Guarantee / Warranty)')
+      }
+    },
   },
   methods: {
     $t (key) {
@@ -131,7 +152,8 @@ export default {
             body: JSON.stringify(this.$data)
           }
         })
-        await store.dispatch('loadTransaction', this.tx.vorgangskennungFachlich)
+
+        await store.dispatch('loadTransaction', this.tx.transactionId)
         this.loading = false
       } catch (err) {
         // eslint-disable-next-line no-console

@@ -11,10 +11,19 @@ import 'vue-loader/lib/runtime/componentNormalizer'
 import store from './store/index'
 import i18n from './de_DE.js'
 
+import helpers from './helpers';
+
 if (process.env.NODE_ENV === "development") {
   const server = require('./server');
-  server.makeServer()
+  server.default();
 }
+
+Vue.use({
+    install() {
+        Vue.helpers = helpers;
+        Vue.prototype.$helpers = helpers;
+    }
+});
 
 Vue.config.productionTip = false
 Vue.config.performance = true
