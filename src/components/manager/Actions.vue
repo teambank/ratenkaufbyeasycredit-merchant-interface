@@ -82,7 +82,7 @@
           min="0.01"
           :max="tx.orderDetails.currentOrderValue"
           value="0"
-        > € / {{ helpers.formatCurrency(tx.orderDetails.currentOrderValue) }}
+        > € / {{ helpers().formatCurrency(tx.orderDetails.currentOrderValue) }}
       </span>
     </p>
 

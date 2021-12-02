@@ -11,7 +11,7 @@
       :tx="tx"
     />
 
-    <span v-if="!tx && helpers.daysSinceOrder(date) >= 1">
+    <span v-if="!tx && helpers().daysSinceOrder(date) >= 1">
       Die Transaktion <strong>{{ id }}</strong> ist nicht vorhanden. Bitte loggen Sie sich im <a href="https://app.easycredit.de">Händlerinterface</a> ein oder kontaktieren Sie unseren Support.
     </span>
     <span v-else-if="!tx">
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     helpers () {
-      return helpers;
+      return helpers
     }
   }
 }
