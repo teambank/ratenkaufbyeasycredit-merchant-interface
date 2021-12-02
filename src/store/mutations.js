@@ -4,7 +4,7 @@ export default {
   },
   fetchSingle (state, { data, id }) {
     state.transactions = state.transactions.filter((t) => t !== null).map((transaction) => {
-      return (transaction.vorgangskennungFachlich === id) ? data : transaction
+      return (transaction.transactionId === id) ? data : transaction
     })
   },
   loading (state, loading) {

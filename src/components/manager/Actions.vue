@@ -5,7 +5,7 @@
   >
     <div class="spinner" />
     <input
-      :value="tx.vorgangskennungFachlich"
+      :value="tx.transactionId"
       type="hidden"
       name="easycredit-merchant[transaction_id]"
     >
