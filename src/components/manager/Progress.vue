@@ -35,16 +35,16 @@ export default {
     progressFields () {
       return [{
         label: this.$t('Order'),
-        value: this.tx.orderDetails.orderDate
+        value: helpers.formatDate(this.tx.orderDetails.orderDate)
       }, {
         label: this.$t('Shipping'),
-        value: this.tx.bookings.filter(b => b.type === 'CAPTURE').created
+        value: helpers.formatDate(this.tx.bookings.find(b => b.type === 'CAPTURE')?.created)
       }, {
         label: this.$t('Clearing'),
-        value: this.tx.bookings.filter(b => b.type === 'NOTIFY').created
+        value: helpers.formatDate(this.tx.bookings.find(b => b.type === 'NOTIFY')?.created)
       }, {
         label: this.$t('Refund'),
-        value: this.tx.bookings.filter(b => b.type === 'REFUND').created
+        value: helpers.formatDate(this.tx.bookings.find(b => b.type === 'REFUND')?.created)
       }]
     },
     orderAmount () {

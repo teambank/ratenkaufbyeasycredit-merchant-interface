@@ -10,5 +10,11 @@ export default {
   },
   formatCurrency (value) {
     return parseFloat(value).toFixed(2) + ' €'
+  },
+  formatDate (dateString) {
+    if (dateString) {
+      return new Date(dateString).toLocaleDateString('de-DE', {year: 'numeric', month: '2-digit', day: '2-digit'})
+    }
+    return 'n/a'
   }
-};
+}
