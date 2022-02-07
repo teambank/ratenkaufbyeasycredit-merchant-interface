@@ -47,8 +47,8 @@ export default {
       return this.transaction(this.id)
     }
   },
-  beforeMount () {
-    store.dispatch('loadTransactions')
+  async beforeMount () {
+    await store.dispatch('loadTransaction', this.id)
   },
   methods: {
     helpers () {

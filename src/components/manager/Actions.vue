@@ -113,7 +113,6 @@ export default {
     return {
       id: this.tx.transactionId,
       status: this.tx.bookings.filter(b => b.type === 'CAPTURE').length ? 'CAPTURE' : '',
-      date: new Date(Date.now()).toLocaleString().split(',')[0].split('/').reverse().join('-'),
       amount: 0.01,
       loading: false,
       trackingNumber: '',

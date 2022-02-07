@@ -9793,12 +9793,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/Manager.vue?vue&type=template&id=ad88987c&shadow
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/Manager.vue?vue&type=template&id=6e13228c&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:(_vm.isLoading) ? 'easycredit-tx-manager loading' : 'easycredit-tx-manager'},[_c('div',{staticClass:"spinner"}),(_vm.tx)?_c('Progress',{attrs:{"tx":_vm.tx}}):_vm._e(),(_vm.tx)?_c('Actions',{attrs:{"tx":_vm.tx}}):_vm._e(),(!_vm.tx && _vm.helpers().daysSinceOrder(_vm.date) >= 1)?_c('span',[_vm._v(" Die Transaktion "),_c('strong',[_vm._v(_vm._s(_vm.id))]),_vm._v(" ist nicht vorhanden. Bitte loggen Sie sich im "),_c('a',{attrs:{"href":"https://app.easycredit.de"}},[_vm._v("Händlerinterface")]),_vm._v(" ein oder kontaktieren Sie unseren Support. ")]):(!_vm.tx)?_c('span',[_vm._v(" Die Transaktion "),_c('strong',[_vm._v(_vm._s(_vm.id))]),_vm._v(" ist noch nicht verfügbar. Es kann bis zu einem Tag dauern bis die Transaktion angezeigt wird. ")]):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Manager.vue?vue&type=template&id=ad88987c&shadow
+// CONCATENATED MODULE: ./src/Manager.vue?vue&type=template&id=6e13228c&shadow
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/manager/Progress.vue?vue&type=template&id=0100c2ae&
 var Progressvue_type_template_id_0100c2ae_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"transaction-info"},[_c('p',[_c('strong',[_vm._v(_vm._s(_vm.$t('Customer'))+":")]),_vm._v(" "+_vm._s(_vm.tx.customer.firstName)+" "+_vm._s(_vm.tx.customer.lastName)),_c('br'),_c('strong',[_vm._v(_vm._s(_vm.$t('Customer No'))+":")]),_vm._v(" "+_vm._s(_vm.tx.customer.customerNumber)),_c('br'),_c('strong',[_vm._v(_vm._s(_vm.$t('Credit Account No'))+":")]),_vm._v(" "+_vm._s(_vm.tx.creditAccountNumber)),_c('br'),_c('strong',[_vm._v(_vm._s(_vm.$t('Transaction Id'))+":")]),_vm._v(" "+_vm._s(_vm.tx.transactionId)),_c('br'),_c('strong',[_vm._v(_vm._s(_vm.$t('Order Amount'))+":")]),_vm._v(" "+_vm._s(_vm.orderAmount)),_c('br')]),_c('div',{staticClass:"progress-bar"},_vm._l((_vm.progressFields),function(field,index){return _c('div',{key:field.label,staticClass:"progress"},[_c('strong',[_vm._v(_vm._s(field.label))]),_c('br'),_c('span',[_vm._v(_vm._s(field.value ? field.value : 'n/a'))]),_c('br'),(index != Object.keys(_vm.progressFields).length - 1)?_c('span',[_vm._v("|")]):_vm._e()])}),0)])}
@@ -9954,12 +9954,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var Progress = (component.exports);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/manager/Actions.vue?vue&type=template&id=6350aaa7&
-var Actionsvue_type_template_id_6350aaa7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.canShip || _vm.canRefund)?_c('div',{class:_vm.loading ? 'loading' : ''},[_c('div',{staticClass:"spinner"}),_c('input',{attrs:{"type":"hidden","name":"easycredit-merchant[transaction_id]"},domProps:{"value":_vm.tx.transactionId}}),_c('p',[_c('label',{attrs:{"for":"easycredit-merchant-status"}},[_vm._v("Status")]),_c('br'),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.status),expression:"status"}],attrs:{"id":"easycredit-merchant-status","name":"easycredit-merchant[status]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.status=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),(_vm.canShip)?_c('option',{attrs:{"value":"CAPTURE"}},[_vm._v(" "+_vm._s(_vm.$t('Shipping'))+" ")]):_vm._e(),(_vm.canRefund)?_c('option',{attrs:{"value":"REFUND"}},[_vm._v(" "+_vm._s(_vm.$t('Refund'))+" ")]):_vm._e()])]),(_vm.status === 'CAPTURE')?_c('p',{staticClass:"tracking-number"},[_c('label',{attrs:{"for":"easycredit-merchant-tracking-number"}},[_vm._v("Trackingnummer (Versanddienstleister)")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.trackingNumber),expression:"trackingNumber"}],attrs:{"id":"easycredit-merchant-tracking-number","name":"easycredit-merchant[trackingNumber]","type":"text","maxlength":"50"},domProps:{"value":(_vm.trackingNumber)},on:{"input":function($event){if($event.target.composing){ return; }_vm.trackingNumber=$event.target.value}}})]):_vm._e(),(_vm.status === 'REFUND')?_c('p',{staticClass:"refund"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.refundReason),expression:"refundReason"}],attrs:{"id":"easycredit-merchant-refund-reason","name":"easycredit-merchant[refund-reason]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.refundReason=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),_vm._l((_vm.refundReasons),function(name,value){return _c('option',{key:value,domProps:{"value":value}},[_vm._v(" "+_vm._s(_vm.$t(name))+" ")])})],2),(_vm.canShowAmount)?_c('span',{staticClass:"amount"},[_c('label',{attrs:{"for":"easycredit-merchant-amount"}},[_vm._v(_vm._s(_vm.$t('Reduction by'))+" ")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.amount),expression:"amount"}],attrs:{"id":"easycredit-merchant-amount","name":"easycredit-merchant[amount]","type":"number","min":"0.01","max":_vm.tx.orderDetails.currentOrderValue,"value":"0"},domProps:{"value":(_vm.amount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.amount=$event.target.value}}}),_vm._v(" € / "+_vm._s(_vm.helpers().formatCurrency(_vm.tx.orderDetails.currentOrderValue))+" ")]):_vm._e()]):_vm._e(),_c('p',[_c('button',{staticClass:"set_merchant_status",attrs:{"type":"button","disabled":_vm.loading || !_vm.status},on:{"click":_vm.updateTransaction}},[_vm._v(" Senden ")])])]):_vm._e()}
-var Actionsvue_type_template_id_6350aaa7_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/manager/Actions.vue?vue&type=template&id=f1697c38&
+var Actionsvue_type_template_id_f1697c38_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.canShip || _vm.canRefund)?_c('div',{class:_vm.loading ? 'loading' : ''},[_c('div',{staticClass:"spinner"}),_c('input',{attrs:{"type":"hidden","name":"easycredit-merchant[transaction_id]"},domProps:{"value":_vm.tx.transactionId}}),_c('p',[_c('label',{attrs:{"for":"easycredit-merchant-status"}},[_vm._v("Status")]),_c('br'),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.status),expression:"status"}],attrs:{"id":"easycredit-merchant-status","name":"easycredit-merchant[status]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.status=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),(_vm.canShip)?_c('option',{attrs:{"value":"CAPTURE"}},[_vm._v(" "+_vm._s(_vm.$t('Shipping'))+" ")]):_vm._e(),(_vm.canRefund)?_c('option',{attrs:{"value":"REFUND"}},[_vm._v(" "+_vm._s(_vm.$t('Refund'))+" ")]):_vm._e()])]),(_vm.status === 'CAPTURE')?_c('p',{staticClass:"tracking-number"},[_c('label',{attrs:{"for":"easycredit-merchant-tracking-number"}},[_vm._v("Trackingnummer (Versanddienstleister)")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.trackingNumber),expression:"trackingNumber"}],attrs:{"id":"easycredit-merchant-tracking-number","name":"easycredit-merchant[trackingNumber]","type":"text","maxlength":"50"},domProps:{"value":(_vm.trackingNumber)},on:{"input":function($event){if($event.target.composing){ return; }_vm.trackingNumber=$event.target.value}}})]):_vm._e(),(_vm.status === 'REFUND')?_c('p',{staticClass:"refund"},[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.refundReason),expression:"refundReason"}],attrs:{"id":"easycredit-merchant-refund-reason","name":"easycredit-merchant[refund-reason]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.refundReason=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),_vm._l((_vm.refundReasons),function(name,value){return _c('option',{key:value,domProps:{"value":value}},[_vm._v(" "+_vm._s(_vm.$t(name))+" ")])})],2),(_vm.canShowAmount)?_c('span',{staticClass:"amount"},[_c('label',{attrs:{"for":"easycredit-merchant-amount"}},[_vm._v(_vm._s(_vm.$t('Reduction by'))+" ")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.amount),expression:"amount"}],attrs:{"id":"easycredit-merchant-amount","name":"easycredit-merchant[amount]","type":"number","min":"0.01","max":_vm.tx.orderDetails.currentOrderValue,"value":"0"},domProps:{"value":(_vm.amount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.amount=$event.target.value}}}),_vm._v(" € / "+_vm._s(_vm.helpers().formatCurrency(_vm.tx.orderDetails.currentOrderValue))+" ")]):_vm._e()]):_vm._e(),_c('p',[_c('button',{staticClass:"set_merchant_status",attrs:{"type":"button","disabled":_vm.loading || !_vm.status},on:{"click":_vm.updateTransaction}},[_vm._v(" Senden ")])])]):_vm._e()}
+var Actionsvue_type_template_id_f1697c38_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/manager/Actions.vue?vue&type=template&id=6350aaa7&
+// CONCATENATED MODULE: ./src/components/manager/Actions.vue?vue&type=template&id=f1697c38&
 
 // CONCATENATED MODULE: ./src/config.js
 var getConfig = function () {
@@ -10195,7 +10195,6 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
     return {
       id: this.tx.transactionId,
       status: this.tx.bookings.filter(b => b.type === 'CAPTURE').length ? 'CAPTURE' : '',
-      date: new Date(Date.now()).toLocaleString().split(',')[0].split('/').reverse().join('-'),
       amount: 0.01,
       loading: false,
       trackingNumber: '',
@@ -10267,8 +10266,8 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
 
 var Actions_component = normalizeComponent(
   manager_Actionsvue_type_script_lang_js_,
-  Actionsvue_type_template_id_6350aaa7_render,
-  Actionsvue_type_template_id_6350aaa7_staticRenderFns,
+  Actionsvue_type_template_id_f1697c38_render,
+  Actionsvue_type_template_id_f1697c38_staticRenderFns,
   false,
   null,
   null,
@@ -10328,8 +10327,8 @@ var Actions_component = normalizeComponent(
 
   },
 
-  beforeMount() {
-    store.dispatch('loadTransactions');
+  async beforeMount() {
+    await store.dispatch('loadTransaction', this.id);
   },
 
   methods: {
@@ -10366,12 +10365,12 @@ var Managershadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var Managershadow = (Managershadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/StatusWidget.vue?vue&type=template&id=d2acb22a&shadow
-var StatusWidgetvue_type_template_id_d2acb22a_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:(_vm.isLoading) ? 'easycredit-tx-status-widget loading' : 'easycredit-tx-status-widget'},[_c('span',{staticClass:"logo"}),_c('span',[_vm._v(_vm._s(_vm.statusLabel))])])}
-var StatusWidgetvue_type_template_id_d2acb22a_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4004e486-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/StatusWidget.vue?vue&type=template&id=57b78141&shadow
+var StatusWidgetvue_type_template_id_57b78141_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:(_vm.isLoading) ? 'easycredit-tx-status-widget loading' : 'easycredit-tx-status-widget'},[_c('span',{staticClass:"logo"}),_c('span',[_vm._v(_vm._s(_vm.statusLabel))])])}
+var StatusWidgetvue_type_template_id_57b78141_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/StatusWidget.vue?vue&type=template&id=d2acb22a&shadow
+// CONCATENATED MODULE: ./src/StatusWidget.vue?vue&type=template&id=57b78141&shadow
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/@vue/cli-plugin-babel/node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/StatusWidget.vue?vue&type=script&lang=js&shadow
 //
@@ -10431,11 +10430,11 @@ var StatusWidgetvue_type_template_id_d2acb22a_shadow_staticRenderFns = []
       }
 
       if (this.statusMapping[this.tx.status] !== 'undefined') {
-        label = this.statusMapping[this.tx.status];
+        return this.statusMapping[this.tx.status];
       }
 
       if (this.tx.orderDetails.originalOrderValue > this.tx.orderDetails.currentOrderValue) {
-        label = this.$t('Refunded');
+        return this.$t('Refunded');
       }
 
       return label;
@@ -10444,7 +10443,7 @@ var StatusWidgetvue_type_template_id_d2acb22a_shadow_staticRenderFns = []
   },
 
   beforeMount() {
-    store.dispatch('loadTransactions');
+    store.dispatch('loadTransaction', this.id);
   },
 
   methods: {
@@ -10471,8 +10470,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var StatusWidgetshadow_component = normalizeComponent(
   src_StatusWidgetvue_type_script_lang_js_shadow,
-  StatusWidgetvue_type_template_id_d2acb22a_shadow_render,
-  StatusWidgetvue_type_template_id_d2acb22a_shadow_staticRenderFns,
+  StatusWidgetvue_type_template_id_57b78141_shadow_render,
+  StatusWidgetvue_type_template_id_57b78141_shadow_staticRenderFns,
   false,
   StatusWidgetshadow_injectStyles,
   null,

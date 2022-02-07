@@ -51,17 +51,17 @@ export default {
       }
 
       if (this.statusMapping[this.tx.status] !== 'undefined') {
-        label = this.statusMapping[this.tx.status]
+        return this.statusMapping[this.tx.status]
       }
 
       if (this.tx.orderDetails.originalOrderValue > this.tx.orderDetails.currentOrderValue) {
-        label = this.$t('Refunded')
+        return this.$t('Refunded')
       }
       return label
     }
   },
   beforeMount () {
-    store.dispatch('loadTransactions')
+    store.dispatch('loadTransaction', this.id)
   },
   methods: {
     $t (key) {
