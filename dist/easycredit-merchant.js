@@ -9827,9 +9827,10 @@ var Progressvue_type_template_id_8376b518_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/de_DE.js
 /* harmony default export */ var de_DE = ({
-  get: function get(key) {
+  get(key) {
     return this.de[key] ? this.de[key] : key;
   },
+
   de: {
     Shipping: 'Lieferung',
     'Cancelled (completely)': 'Widerruf (vollständig)',
@@ -9929,12 +9930,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var Progress = (component.exports);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d645420-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/manager/Actions.vue?vue&type=template&id=756feb00&
-var Actionsvue_type_template_id_756feb00_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.canShip || _vm.canRefund)?_c('div',{class:_vm.loading ? 'loading' : ''},[_c('div',{staticClass:"spinner"}),_c('input',{attrs:{"type":"hidden","name":"easycredit-merchant[transaction_id]"},domProps:{"value":_vm.tx.vorgangskennungFachlich}}),_c('p',[_c('label',{attrs:{"for":"easycredit-merchant-status"}},[_vm._v("Status")]),_c('br'),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.status),expression:"status"}],attrs:{"id":"easycredit-merchant-status","name":"easycredit-merchant[status]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.status=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),(_vm.canShip)?_c('optgroup',{attrs:{"label":_vm.$t('Shipping')}},[_c('option',{attrs:{"value":"LIEFERUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Shipping'))+" ")])]):_vm._e(),(_vm.canRefund)?_c('optgroup',{attrs:{"label":_vm.$t('Reversal')}},[_c('option',{attrs:{"value":"WIDERRUF_VOLLSTAENDIG"}},[_vm._v(" "+_vm._s(_vm.$t('Cancelled (completely)'))+" ")]),_c('option',{attrs:{"value":"WIDERRUF_TEILWEISE"}},[_vm._v(" "+_vm._s(_vm.$t('Cancelled (partially)'))+" ")]),_c('option',{attrs:{"value":"RUECKGABE_GARANTIE_GEWAEHRLEISTUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Return (Warranty)'))+" ")]),_c('option',{attrs:{"value":"MINDERUNG_GARANTIE_GEWAEHRLEISTUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Abatement (Warranty)'))+" ")])]):_vm._e()])]),(_vm.canShowAmount)?_c('p',{staticClass:"amount"},[_c('label',{attrs:{"for":"easycredit-merchant-amount"}},[_vm._v("Minderung um ")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.amount),expression:"amount"}],attrs:{"id":"easycredit-merchant-amount","name":"easycredit-merchant[amount]","type":"number","min":"0.01","max":_vm.tx.bestellwertAktuell,"value":"0"},domProps:{"value":(_vm.amount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.amount=$event.target.value}}}),_vm._v(" EUR ")]):_vm._e(),_c('p',{staticClass:"date"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.date),expression:"date"}],staticClass:"date",attrs:{"for":"easycredit-merchant-date","name":"easycredit-merchant[date]","type":"date","disabled":!_vm.canEditDate},domProps:{"value":(_vm.date)},on:{"input":function($event){if($event.target.composing){ return; }_vm.date=$event.target.value}}}),_c('button',{staticClass:"set_merchant_status",attrs:{"type":"button","disabled":_vm.loading || !_vm.status},on:{"click":_vm.updateTransaction}},[_vm._v(" Senden ")])])]):_vm._e()}
-var Actionsvue_type_template_id_756feb00_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d645420-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/manager/Actions.vue?vue&type=template&id=1b42a973&
+var Actionsvue_type_template_id_1b42a973_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.canShip || _vm.canRefund)?_c('div',{class:_vm.loading ? 'loading' : ''},[_c('div',{staticClass:"spinner"}),_c('input',{attrs:{"type":"hidden","name":"easycredit-merchant[transaction_id]"},domProps:{"value":_vm.tx.vorgangskennungFachlich}}),_c('p',[_c('label',{attrs:{"for":"easycredit-merchant-status"}},[_vm._v("Status")]),_c('br'),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.status),expression:"status"}],attrs:{"id":"easycredit-merchant-status","name":"easycredit-merchant[status]"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.status=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":""}},[_vm._v(" "+_vm._s(_vm.$t('Please select ...'))+" ")]),(_vm.canShip)?_c('optgroup',{attrs:{"label":_vm.$t('Shipping')}},[_c('option',{attrs:{"value":"LIEFERUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Shipping'))+" ")])]):_vm._e(),(_vm.canRefund)?_c('optgroup',{attrs:{"label":_vm.$t('Reversal')}},[_c('option',{attrs:{"value":"WIDERRUF_VOLLSTAENDIG"}},[_vm._v(" "+_vm._s(_vm.$t('Cancelled (completely)'))+" ")]),_c('option',{attrs:{"value":"WIDERRUF_TEILWEISE"}},[_vm._v(" "+_vm._s(_vm.$t('Cancelled (partially)'))+" ")]),_c('option',{attrs:{"value":"RUECKGABE_GARANTIE_GEWAEHRLEISTUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Return (Warranty)'))+" ")]),_c('option',{attrs:{"value":"MINDERUNG_GARANTIE_GEWAEHRLEISTUNG"}},[_vm._v(" "+_vm._s(_vm.$t('Abatement (Warranty)'))+" ")])]):_vm._e()])]),(_vm.canShowAmount)?_c('p',{staticClass:"amount"},[_c('label',{attrs:{"for":"easycredit-merchant-amount"}},[_vm._v("Minderung um ")]),_c('br'),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.amount),expression:"amount"}],attrs:{"id":"easycredit-merchant-amount","name":"easycredit-merchant[amount]","type":"number","min":"0.01","max":_vm.tx.bestellwertAktuell,"value":"0"},domProps:{"value":(_vm.amount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.amount=$event.target.value}}}),_vm._v(" EUR ")]):_vm._e(),_c('p',[_c('button',{staticClass:"set_merchant_status",attrs:{"type":"button","disabled":_vm.loading || !_vm.status},on:{"click":_vm.updateTransaction}},[_vm._v(" Senden ")])])]):_vm._e()}
+var Actionsvue_type_template_id_1b42a973_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/manager/Actions.vue?vue&type=template&id=756feb00&
+// CONCATENATED MODULE: ./src/components/manager/Actions.vue?vue&type=template&id=1b42a973&
 
 // CONCATENATED MODULE: ./src/config.js
 var getConfig = function () {
@@ -10134,14 +10135,6 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -10154,7 +10147,6 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
     return {
       id: this.tx.vorgangskennungFachlich,
       status: this.tx.lieferdatum === null ? 'LIEFERUNG' : '',
-      date: new Date(Date.now()).toLocaleString().split(',')[0].split('/').reverse().join('-'),
       amount: 0.01,
       loading: false
     };
@@ -10163,10 +10155,6 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
   computed: {
     canShowAmount() {
       return this.status === 'WIDERRUF_TEILWEISE' || this.status === 'MINDERUNG_GARANTIE_GEWAEHRLEISTUNG';
-    },
-
-    canEditDate() {
-      return this.status !== 'LIEFERUNG';
     },
 
     canShip() {
@@ -10215,8 +10203,8 @@ vue_runtime_esm["a" /* default */].use(vuex_esm["a" /* default */]);
 
 var Actions_component = normalizeComponent(
   manager_Actionsvue_type_script_lang_js_,
-  Actionsvue_type_template_id_756feb00_render,
-  Actionsvue_type_template_id_756feb00_staticRenderFns,
+  Actionsvue_type_template_id_1b42a973_render,
+  Actionsvue_type_template_id_1b42a973_staticRenderFns,
   false,
   null,
   null,

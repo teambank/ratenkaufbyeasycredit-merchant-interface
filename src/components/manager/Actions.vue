@@ -63,15 +63,7 @@
       > EUR
     </p>
 
-    <p class="date">
-      <input
-        v-model="date"
-        for="easycredit-merchant-date"
-        name="easycredit-merchant[date]"
-        type="date"
-        class="date"
-        :disabled="!canEditDate"
-      >
+    <p>
       <button
         type="button"
         class="set_merchant_status"
@@ -97,7 +89,6 @@ export default {
     return {
       id: this.tx.vorgangskennungFachlich,
       status: this.tx.lieferdatum === null ? 'LIEFERUNG' : '',
-      date: new Date(Date.now()).toLocaleString().split(',')[0].split('/').reverse().join('-'),
       amount: 0.01,
       loading: false
     }
@@ -106,9 +97,6 @@ export default {
     canShowAmount () {
       return this.status === 'WIDERRUF_TEILWEISE' ||
         this.status === 'MINDERUNG_GARANTIE_GEWAEHRLEISTUNG'
-    },
-    canEditDate () {
-      return this.status !== 'LIEFERUNG'
     },
     canShip () {
       return this.tx.lieferdatum === null
