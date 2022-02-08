@@ -12,7 +12,7 @@
     />
 
     <span v-if="!tx && daysSinceOrder() >= 1">
-      Die Transaktion <strong>{{ id }}</strong> ist nicht vorhanden. Bitte loggen Sie sich im <a href="https://partner.easycredit-ratenkauf.de/portal/">Händlerinterface</a> ein oder kontaktieren Sie unseren Support.
+      Die Transaktion <strong>{{ id }}</strong> ist nicht vorhanden. Bitte loggen Sie sich im <a href="https://partner.easycredit-ratenkauf.de/portal/">Partnerportal</a> ein oder kontaktieren Sie unseren Partnerservice.
     </span>
     <span v-else-if="!tx">
       Die Transaktion <strong>{{ id }}</strong> ist noch nicht verfügbar. Es kann bis zu einem Tag dauern bis die Transaktion angezeigt wird.
