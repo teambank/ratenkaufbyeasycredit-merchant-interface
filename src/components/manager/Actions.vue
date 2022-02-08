@@ -9,6 +9,13 @@
       type="hidden"
       name="easycredit-merchant[transaction_id]"
     >
+
+    <div 
+      v-if="error" 
+      class="easycredit-tx-alert error"
+    >
+      {{ error }}  
+    </div>
     <p>
       <label for="easycredit-merchant-status">Status</label><br>
       <select
@@ -90,7 +97,8 @@ export default {
       id: this.tx.vorgangskennungFachlich,
       status: this.tx.lieferdatum === null ? 'LIEFERUNG' : '',
       amount: 0.01,
-      loading: false
+      loading: false,
+      error: null
     }
   },
   computed: {
@@ -111,6 +119,8 @@ export default {
     },
     async updateTransaction () {
       this.loading = true
+      this.error = null
+
       try {
         await fetch(config.getEndpoints().post, {
           ...config.getRequestConfig(),
@@ -118,13 +128,19 @@ export default {
             method: 'POST',
             body: JSON.stringify(this.$data)
           }
+        }).then((response) => {
+          if (!response.ok) {
+            return response.text().then((error) => {
+              throw Error(error);
+            })
+          }
+          return response;
         })
         await store.dispatch('loadTransaction', this.tx.vorgangskennungFachlich)
-        this.loading = false
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.log(err)
+      } catch (error) {
+        this.error = error.message
       }
+      this.loading = false
     }
   }
 }
